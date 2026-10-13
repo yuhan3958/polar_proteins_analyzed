@@ -32,8 +32,6 @@ def make_paper():
         st.append(f"| {r['accession']} | {r['pdb']} | {r['mapped_residues']} | {100*r['fasta_to_structure_identity']:.2f}% |")
     text = f"""# 저온 적응 미생물과 중온성 미생물의 GH2 β-galactosidase 아미노산 조성 및 활성 부위 구조 비교
 
-**형식:** 공개 생물정보학 자료에 기반한 탐색적 소논문 초안 (독립적 생물학적 실험 아님)
-
 ## 초록
 
 저온 적응 효소의 아미노산 조성은 저온 활성과 열안정성에 관련된 후보 특성으로 논의되어 왔다. 본 연구에서는 공개 서열 중 저온군 {dataset['group_counts']['cold']}개와 중온군 {dataset['group_counts']['meso']}개의 GH2 β-galactosidase를 선정하고, {dataset['total_pairs']}쌍의 서열 정렬과 G(글리신)·P(프롤린)·R(아르기닌)의 조성 비교를 실시하였다. 단백질별 단순 평균과 미생물 속별 균형 평균을 비교하였으며, MAFFT 다중 서열 정렬, FastTree 단백질 계통 추정, 결정구조 2개의 촉매 관련 잔기 거리 계산을 수행하였다. 글리신의 저온군−중온군 평균 차이는 단순 평균 {float(contrasts['G']['protein_weighted_difference_pp']):+.3f}pp에서 속별 균형 후 {float(contrasts['G']['equal_genus_difference_pp']):+.3f}pp로 감소하였고 프롤린은 부호가 역전되었다. 계통 구성에 민감한 결과로 판단되며 저온 적응의 인과적 기작은 확정할 수 없다.
@@ -110,9 +108,7 @@ MAFFT {phy['tools']['mafft'][0]}를 이용해 총 {phy['alignment_columns']}열�
 
 ## 재현성 및 데이터 공개
 
-연구 코드와 표본 선정 메타데이터는 https://github.com/yuhan3958/polar_proteins_analyze 에 정리되어 있다. 모든 파이프라인은 python run_all.py로 실행하며, 본 원고는 python scripts/generate_manuscript.py로 동일한 분석 결과 파일에서 재생성한다.
-
-**원고 상태:** 소논문 형태의 초안. 개별 표본의 모든 온도 출처와 해석은 최종 제출 전 독립 검토가 필요하다.
+연구 코드와 표본 선정 메타데이터는 https://github.com/yuhan3958/polar_proteins_analyzed 에 정리되어 있다. 모든 파이프라인은 python run_all.py로 실행하며, 본 원고는 python scripts/generate_manuscript.py로 동일한 분석 결과 파일에서 재생성한다.
 """
     PAPER.parent.mkdir(parents=True,exist_ok=True)
     PAPER.write_text(text,encoding="utf-8")
