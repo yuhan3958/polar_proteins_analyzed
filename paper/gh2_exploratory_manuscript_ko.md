@@ -80,6 +80,4 @@ MAFFT v7.525 (2024/Mar/13)를 이용해 총 1208열의 정렬을 얻고 FastTree
 
 연구 코드와 표본 선정 메타데이터는 https://github.com/yuhan3958/polar_proteins_analyzed 에 정리되어 있다. 모든 파이프라인은 python run_all.py로 실행하며, 본 원고는 python scripts/generate_manuscript.py로 동일한 분석 결과 파일에서 재생성한다.
 
-**원고 상태:** 소논문 형태의 초안. 개별 표본의 모든 온도 출처와 해석은 최종 제출 전 독립 검토가 필요하다.
-
 *Copyright 2026. Yuhan Kim. All rights reserved.*
