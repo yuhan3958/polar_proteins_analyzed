@@ -1,0 +1,5 @@
+﻿accession,organism,reason
+D9IU58,Arthrobacter sp. ON14,서열에 미확정 잔기 X 포함; 표준 20종 조성 분석의 주 데이터셋에서 제외.
+PQ479351,Arthrobacter sp. S3*,ON14 GH2와 99.7% 수준의 근접 서열; 균주 과대표집을 줄이기 위해 미채택. GH42 효소도 별도 계열로 제외.
+ACY69080.1,Paracoccus sp. 32d,GH2이지만 731 aa이며 C-terminal Bgal_small_N 도메인이 없음. LacZ형 전장 비교의 주 데이터셋에서 제외.
+B6EAX7,Arthrobacter sp. 20B,UniProt에서 reference proteome 정책으로 삭제됨. 같은 서열의 NCBI 원본 ACI41243.1을 사용.

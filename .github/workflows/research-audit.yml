@@ -1,0 +1,58 @@
+name: Research audit checks
+on:
+  push:
+    branches: [master, 'research/**']
+  pull_request:
+    branches: [master]
+jobs:
+  audit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install bioinformatics dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Install alignment tools
+        run: sudo apt-get update && sudo apt-get install -y mafft fasttree
+      - name: Unit tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Dataset audit
+        run: python scripts/audit_phylogeny.py
+      - name: Extended research analyses
+        run: python scripts/extended_research.py
+      - name: Multiple sequence alignment and protein tree
+        run: python scripts/build_phylogeny.py
+      - name: Protein tree local support review
+        run: python scripts/tree_support_audit.py
+      - name: PDB structural distance analysis
+        run: python scripts/structure_distances.py
+      - name: Full one-command pipeline
+        run: python run_all.py
+      - name: Check generated audit files
+        run: |
+          test -s dataset_results/audit/group_sensitivity.csv
+          test -s dataset_results/audit/summary.json
+          test -s dataset_results/audit/research_report.md
+          test -s dataset_results/extended/active_site_mapping.csv
+          test -s dataset_results/extended/thermal_metadata_audit.csv
+          test -s dataset_results/extended/identity_distance_NJ_EXPLORATORY.nwk
+          test -s dataset_results/phylogeny/gh2_mafft.fasta
+          test -s dataset_results/phylogeny/gh2_fasttree.nwk
+          test -s dataset_results/phylogeny/support_audit.json
+          test -s dataset_results/structures/distances.csv
+          test -s dataset_results/full_run_manifest.json
+          test -s dataset_results/manuscript_validation.json
+          test -s paper/gh2_exploratory_manuscript_ko.md
+      - name: Archive audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: genus-audit-results
+          path: |
+            dataset_results/audit/
+            dataset_results/extended/
+            dataset_results/phylogeny/
+            dataset_results/structures/
+            dataset_results/manuscript_validation.json
+            paper/

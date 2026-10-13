@@ -1,0 +1,19 @@
+{
+  "dataset_version": "gh2_10_vs_10_v1",
+  "validated_at_utc": "2026-10-08T12:04:42.853838+00:00",
+  "group_counts": {
+    "cold": 10,
+    "meso": 10
+  },
+  "unique_sequences": 20,
+  "nonstandard_residues": 0,
+  "length_min": 998,
+  "length_max": 1053,
+  "warnings": [
+    "Cold group includes psychrophiles and psychrotolerants.",
+    "Ten proteins per group do not mean ten independent species in the cold group.",
+    "Some mesophilic classifications rely on culture-collection or species-level evidence; exact growth optima remain unknown.",
+    "A1SWB8 and Q6LL68 enzyme activities are homology annotations, not direct cold-activity assays.",
+    "Phylogeny, high-pressure adaptation and sample selection confound temperature comparisons."
+  ]
+}
